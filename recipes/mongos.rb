@@ -31,7 +31,7 @@ service node[:mongodb][:default_init_name] do
 end
 
 configsrvs = search(
-  :node,
+  node[:mongodb][:collection_name],
   "mongodb_cluster_name:#{node['mongodb']['cluster_name']} AND \
    mongodb_is_configserver:true AND \
    chef_environment:#{node.chef_environment}"

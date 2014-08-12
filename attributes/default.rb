@@ -103,6 +103,8 @@ default[:mongodb][:template_cookbook] = 'mongodb'
 
 default[:mongodb][:key_file_content] = nil
 
+default[:mongodb][:collection_name] = 'node'
+
 # install the mongo and bson_ext ruby gems at compile time to make them globally available
 # TODO: remove bson_ext once mongo gem supports bson >= 2
 default['mongodb']['ruby_gems'] = {

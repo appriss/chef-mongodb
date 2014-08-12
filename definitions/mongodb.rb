@@ -204,7 +204,7 @@ define :mongodb_instance,
   # replicaset
   if new_resource.is_replicaset && new_resource.auto_configure_replicaset
     rs_nodes = search(
-      :node,
+      node[:mongodb][:collection_name],
       "mongodb_cluster_name:#{new_resource.replicaset['mongodb']['cluster_name']} AND \
        mongodb_is_replicaset:true AND \
        mongodb_shard_name:#{new_resource.replicaset['mongodb']['shard_name']} AND \
@@ -230,7 +230,7 @@ define :mongodb_instance,
     # configure the sharded collections
 
     shard_nodes = search(
-      :node,
+      node[:mongodb][:collection_name],
       "mongodb_cluster_name:#{new_resource.cluster_name} AND \
        mongodb_is_shard:true AND \
        chef_environment:#{node.chef_environment}"
